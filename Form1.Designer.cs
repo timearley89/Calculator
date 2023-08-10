@@ -45,9 +45,17 @@
             this.btn4 = new System.Windows.Forms.Button();
             this.btn7 = new System.Windows.Forms.Button();
             this.pnlButtons = new System.Windows.Forms.Panel();
-            this.txtCalc = new System.Windows.Forms.TextBox();
+            this.btnMod = new System.Windows.Forms.Button();
+            this.btnPower = new System.Windows.Forms.Button();
+            this.btnRoot = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.txtCalc = new System.Windows.Forms.TextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblRegA = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblRegB = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblRegOut = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlButtons.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDecimal
@@ -276,6 +284,9 @@
             // 
             // pnlButtons
             // 
+            this.pnlButtons.Controls.Add(this.btnMod);
+            this.pnlButtons.Controls.Add(this.btnPower);
+            this.pnlButtons.Controls.Add(this.btnRoot);
             this.pnlButtons.Controls.Add(this.btnClear);
             this.pnlButtons.Controls.Add(this.btn7);
             this.pnlButtons.Controls.Add(this.btnAdd);
@@ -298,17 +309,47 @@
             this.pnlButtons.Size = new System.Drawing.Size(314, 407);
             this.pnlButtons.TabIndex = 16;
             // 
-            // txtCalc
+            // btnMod
             // 
-            this.txtCalc.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCalc.Location = new System.Drawing.Point(12, 12);
-            this.txtCalc.MaxLength = 17;
-            this.txtCalc.Name = "txtCalc";
-            this.txtCalc.ReadOnly = true;
-            this.txtCalc.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtCalc.Size = new System.Drawing.Size(314, 44);
-            this.txtCalc.TabIndex = 17;
-            this.txtCalc.Text = "0";
+            this.btnMod.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnMod.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnMod.Font = new System.Drawing.Font("Malgun Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMod.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnMod.Location = new System.Drawing.Point(81, 5);
+            this.btnMod.Name = "btnMod";
+            this.btnMod.Size = new System.Drawing.Size(75, 75);
+            this.btnMod.TabIndex = 19;
+            this.btnMod.Text = "%";
+            this.btnMod.UseVisualStyleBackColor = false;
+            this.btnMod.Click += new System.EventHandler(this.btnMod_Click);
+            // 
+            // btnPower
+            // 
+            this.btnPower.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnPower.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnPower.Font = new System.Drawing.Font("Malgun Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPower.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnPower.Location = new System.Drawing.Point(240, 5);
+            this.btnPower.Name = "btnPower";
+            this.btnPower.Size = new System.Drawing.Size(75, 75);
+            this.btnPower.TabIndex = 18;
+            this.btnPower.Text = "^";
+            this.btnPower.UseVisualStyleBackColor = false;
+            this.btnPower.Click += new System.EventHandler(this.btnPower_Click);
+            // 
+            // btnRoot
+            // 
+            this.btnRoot.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRoot.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnRoot.Font = new System.Drawing.Font("Malgun Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoot.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnRoot.Location = new System.Drawing.Point(159, 5);
+            this.btnRoot.Name = "btnRoot";
+            this.btnRoot.Size = new System.Drawing.Size(75, 75);
+            this.btnRoot.TabIndex = 17;
+            this.btnRoot.Text = "~";
+            this.btnRoot.UseVisualStyleBackColor = false;
+            this.btnRoot.Click += new System.EventHandler(this.btnRoot_Click);
             // 
             // btnClear
             // 
@@ -324,12 +365,56 @@
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // txtCalc
+            // 
+            this.txtCalc.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCalc.Location = new System.Drawing.Point(12, 12);
+            this.txtCalc.MaxLength = 17;
+            this.txtCalc.Name = "txtCalc";
+            this.txtCalc.ReadOnly = true;
+            this.txtCalc.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtCalc.Size = new System.Drawing.Size(314, 44);
+            this.txtCalc.TabIndex = 17;
+            this.txtCalc.Text = "0";
+            //this.txtCalc.TextChanged += new System.EventHandler(this.txtCalc_TextChanged);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblRegA,
+            this.lblRegB,
+            this.lblRegOut});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 458);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(337, 22);
+            this.statusStrip1.TabIndex = 18;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblRegA
+            // 
+            this.lblRegA.Name = "lblRegA";
+            this.lblRegA.Size = new System.Drawing.Size(60, 17);
+            this.lblRegA.Text = "RegisterA:";
+            // 
+            // lblRegB
+            // 
+            this.lblRegB.Name = "lblRegB";
+            this.lblRegB.Size = new System.Drawing.Size(62, 17);
+            this.lblRegB.Text = "RegisterB: ";
+            // 
+            // lblRegOut
+            // 
+            this.lblRegOut.Name = "lblRegOut";
+            this.lblRegOut.Size = new System.Drawing.Size(75, 17);
+            this.lblRegOut.Text = "RegisterOut: ";
+            // 
             // frmCalculator
             // 
             this.AcceptButton = this.btnEquals;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 480);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.txtCalc);
             this.Controls.Add(this.pnlButtons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -339,6 +424,8 @@
             this.Text = "Calculator v0.1";
             this.Load += new System.EventHandler(this.frmCalculator_Load);
             this.pnlButtons.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,6 +452,13 @@
         private System.Windows.Forms.Panel pnlButtons;
         private System.Windows.Forms.TextBox txtCalc;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnRoot;
+        private System.Windows.Forms.Button btnMod;
+        private System.Windows.Forms.Button btnPower;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblRegA;
+        private System.Windows.Forms.ToolStripStatusLabel lblRegB;
+        private System.Windows.Forms.ToolStripStatusLabel lblRegOut;
     }
 }
 
